@@ -2,7 +2,7 @@
  * @Author: zhangleh lehan.zhang@sdbean.com
  * @Date: 2022-06-01 10:33:46
  * @LastEditors: zhangleh lehan.zhang@sdbean.com
- * @LastEditTime: 2022-06-02 14:59:05
+ * @LastEditTime: 2022-06-02 15:19:57
  * @FilePath: /Nft_hardhat_test/test/test_wall_nft721.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -34,6 +34,7 @@ describe("Wall", function () {
 
     const wsb = await this.wall.setBaseURI(baseUri);
 
+    await wsb;
 
     expect(await this.wall.getBaseURI()).to.equal(baseUri);
 

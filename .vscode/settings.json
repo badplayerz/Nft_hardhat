@@ -1,0 +1,4 @@
+{
+    "git.ignoreLimitWarning": true,
+    "solidity.compileUsingLocalVersion": "/Users/sdbean-zlh/Documents/hardhat/Nft_hardhat_test/soljson-v0.8.12+commit.f00d7308.js"
+}

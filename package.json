@@ -25,6 +25,7 @@
     "merkletreejs": "^0.2.31",
     "openzeppelin-solidity": "^4.6.0",
     "solc": "^0.8.14-fixed",
-    "solium": "^1.2.5"
+    "solium": "^1.2.5",
+    "web3": "^1.7.3"
   }
 }

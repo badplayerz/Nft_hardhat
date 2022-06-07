@@ -5,9 +5,10 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 import "hardhat/console.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 
-contract Wall is ERC721Enumerable,Ownable{
+contract Wall is ERC721Enumerable,Ownable,ReentrancyGuard{
 
     string private baseURI;
     // address private operator;
@@ -68,7 +69,7 @@ contract Wall is ERC721Enumerable,Ownable{
     }
 
     // alpha mint
-    function alphaMint(uint256 num, bytes32[] calldata merkleProof) public payable{
+    function alphaMint(uint256 num, bytes32[] calldata merkleProof) external nonReentrant payable {
         console.log("address:%s",msg.sender);
         require(currentSaleState == SaleState.alphaSale,"Alpha mint is not current!");
         require(num > 0,"Must mint at least one!");

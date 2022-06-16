@@ -37,6 +37,13 @@ contract Wall is ERC721Enumerable,Ownable,ReentrancyGuard{
 
     }
 
+    // only address not contract caller
+    modifier callerIsUser(){
+        require(tx.origin == msg.sender,"The caller is contract!");
+        _;
+    }
+
+
     //set baseURI
     function setBaseURI(string memory _baseUri) external onlyOwner{
         baseURI = _baseUri;
@@ -69,7 +76,7 @@ contract Wall is ERC721Enumerable,Ownable,ReentrancyGuard{
     }
 
     // alpha mint
-    function alphaMint(uint256 num, bytes32[] calldata merkleProof) external nonReentrant payable {
+    function alphaMint(uint256 num, bytes32[] calldata merkleProof) external payable callerIsUser nonReentrant{
         console.log("address:%s",msg.sender);
         require(currentSaleState == SaleState.alphaSale,"Alpha mint is not current!");
         require(num > 0,"Must mint at least one!");
@@ -83,7 +90,7 @@ contract Wall is ERC721Enumerable,Ownable,ReentrancyGuard{
     }
 
     // beta mint
-    function betaMint(uint256 num, bytes32[] calldata merkleProof) public payable{
+    function betaMint(uint256 num, bytes32[] calldata merkleProof) external payable callerIsUser nonReentrant{
         require(currentSaleState == SaleState.betaSale,"Alpha mint is not current!");
         require(num > 0,"Must mint at least one!");
         require(num + currentTokenId < MAX_AMOUT,"Must mint at least one!");

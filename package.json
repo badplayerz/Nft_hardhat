@@ -19,8 +19,11 @@
   },
   "dependencies": {
     "@chainlink/contracts": "^0.4.1",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
     "@openzeppelin/contracts": "^4.6.0",
+    "axios": "^0.27.2",
     "dotenv": "^16.0.0",
+    "erc721a": "^4.0.0",
     "keccak256": "^1.0.6",
     "merkletreejs": "^0.2.31",
     "openzeppelin-solidity": "^4.6.0",

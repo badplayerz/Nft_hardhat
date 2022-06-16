@@ -2,7 +2,7 @@
  * @Author: zhangleh lehan.zhang@sdbean.com
  * @Date: 2022-06-06 10:35:05
  * @LastEditors: zhangleh lehan.zhang@sdbean.com
- * @LastEditTime: 2022-06-07 17:43:35
+ * @LastEditTime: 2022-06-10 10:29:43
  * @FilePath: /Nft_hardhat_test/scripts/front_bot.js
  * @Description: opensea front-run
  * @Flow:1.监听通过webscoket监听mempool的pending订单；
@@ -16,6 +16,7 @@ const ethers = require("ethers");
 // var wss = "wss://eth-goerli.alchemyapi.io/v2/4vtT6OKliTR3DmTLOjkqmEsFuJS9IlE1"; //测试节点
 var wss = "wss://eth-mainnet.alchemyapi.io/v2/6ppvG4FdVD_0Mgk037UMNLpfetmirgV6"; //正式节点
 const web3 = new Web3(wss);
+
 
 // const tools = require("./web3_tools.js");
 // tools.BufferToString(wss);

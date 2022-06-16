@@ -2,17 +2,19 @@
  * @Author: zhangleh lehan.zhang@sdbean.com
  * @Date: 2022-05-06 13:29:17
  * @LastEditors: zhangleh lehan.zhang@sdbean.com
- * @LastEditTime: 2022-06-02 11:53:49
+ * @LastEditTime: 2022-06-10 16:14:30
  * @FilePath: /Nft_hardhat_test/hardhat.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
 require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 
 const {
   API_URL,
-  PRIVATE_KEY
+  PRIVATE_KEY,
+  ETHERSCAN_API_KEY
 } = process.env;
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -40,5 +42,10 @@ module.exports = {
       url: API_URL,
       accounts: [`0x${PRIVATE_KEY}`]
     }
+  },
+  etherscan: {
+    // Your API key for Etherscan
+    // Obtain one at https://etherscan.io/
+    apiKey: ETHERSCAN_API_KEY
   },
 };

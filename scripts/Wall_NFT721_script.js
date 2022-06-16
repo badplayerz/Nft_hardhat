@@ -1,3 +1,11 @@
+/*
+ * @Author: zhangleh lehan.zhang@sdbean.com
+ * @Date: 2022-06-01 10:35:22
+ * @LastEditors: zhangleh lehan.zhang@sdbean.com
+ * @LastEditTime: 2022-06-10 14:59:00
+ * @FilePath: /Nft_hardhat_test/scripts/Wall_NFT721_script.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // We require the Hardhat Runtime Environment explicitly here. This is optional
 // but useful for running the script in a standalone fashion through `node <script>`.
 //
@@ -14,10 +22,10 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Wall = await hre.ethers.getContractFactory("Wall_NFT721");
-  const wall = await Wall.deploy("WallNFT","Wall",1000);
+  const Wall = await hre.ethers.getContractFactory("Wall");
+  const wall = await Wall.deploy("Wall","WALL",1000);
   await wall.deployed();
-
+ 
   console.log("Wall deployed to:", wall.address);
 }
 

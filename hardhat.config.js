@@ -2,7 +2,7 @@
  * @Author: zhangleh lehan.zhang@sdbean.com
  * @Date: 2022-05-06 13:29:17
  * @LastEditors: zhangleh lehan.zhang@sdbean.com
- * @LastEditTime: 2022-06-10 16:14:30
+ * @LastEditTime: 2022-07-19 10:21:30
  * @FilePath: /Nft_hardhat_test/hardhat.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -10,9 +10,10 @@ require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
 require("@nomiclabs/hardhat-ethers");
 require("@nomiclabs/hardhat-etherscan");
+require('@openzeppelin/hardhat-upgrades');
 
 const {
-  API_URL,
+  API_GOERLI_URL,
   PRIVATE_KEY,
   ETHERSCAN_API_KEY
 } = process.env;
@@ -39,7 +40,7 @@ module.exports = {
   networks: {
     hardhat: {},
     goerli: {
-      url: API_URL,
+      url: API_GOERLI_URL,
       accounts: [`0x${PRIVATE_KEY}`]
     }
   },

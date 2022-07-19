@@ -16,14 +16,13 @@ contract Wall is ERC721Enumerable,Ownable,ReentrancyGuard{
     uint256 private currentTokenId = 0; //token id
     uint256 immutable public MAX_AMOUT; //max mint amout
     bytes32 public merkleRoot;  // whitelist merkle root
+    mapping(address=>bool) public whitelistClaimed; // is whitelist claimed
 
     // sale state
     enum SaleState{
         alphaSale,
         betaSale,
-        publicSale
-
-        
+        publicSale        
     }
 
     SaleState public currentSaleState;  // current sale state : alphaSale,betaSale,publicSale
@@ -34,7 +33,6 @@ contract Wall is ERC721Enumerable,Ownable,ReentrancyGuard{
         uint256 amout
     ) ERC721(name,symbol){
         MAX_AMOUT = amout;
-
     }
 
     // only address not contract caller
@@ -80,13 +78,14 @@ contract Wall is ERC721Enumerable,Ownable,ReentrancyGuard{
         console.log("address:%s",msg.sender);
         require(currentSaleState == SaleState.alphaSale,"Alpha mint is not current!");
         require(num > 0,"Must mint at least one!");
-        require(num + currentTokenId < MAX_AMOUT,"Must mint at least one!");
+        require(num + currentTokenId < MAX_AMOUT,"Must mint less than maxamout!");
+        require(!whitelistClaimed[msg.sender],"You are not in whitelist!");
         require(MerkleProof.verify(merkleProof,merkleRoot,keccak256(abi.encodePacked(msg.sender))),"Sender address is not in whitelist!");
 
+        whitelistClaimed[msg.sender] = true;
         for(uint256 i; i < num; i++){
             _safeMint(msg.sender,currentTokenId++);
         }
-        
     }
 
     // beta mint
